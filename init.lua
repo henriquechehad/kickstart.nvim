@@ -407,7 +407,10 @@ require('lazy').setup({
         -- You can put your default mappings / updates / etc. in here
         --  All the info you're looking for is in `:help telescope.setup()`
         --
-        --
+
+        defaults = {
+          file_ignore_patterns = { '%.git/' },
+        },
         pickers = {
           find_files = {
             hidden = true,
@@ -561,6 +564,7 @@ require('lazy').setup({
           --  This is where a variable was first declared, or where a function is defined, etc.
           --  To jump back, press <C-t>.
           map('grd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
+          map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition') -- custom shortcut
 
           -- WARN: This is not Goto Definition, this is Goto Declaration.
           --  For example, in C this would take you to the header.
@@ -688,7 +692,9 @@ require('lazy').setup({
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`ts_ls`) will work just fine
-        -- ts_ls = {},
+        ts_ls = {},
+
+        hydra_lsp = {}, -- python
         --
 
         lua_ls = {
