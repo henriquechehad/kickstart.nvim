@@ -6,14 +6,21 @@ return {
   version = '*',
   dependencies = {
     'nvim-lua/plenary.nvim',
-    'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
-    'MunifTanjim/nui.nvim',
+'MunifTanjim/nui.nvim',
   },
   lazy = false,
   keys = {
     { '\\', ':Neotree reveal<CR>', desc = 'NeoTree reveal', silent = true },
   },
   opts = {
+    default_component_configs = {
+      icon = {
+        folder_closed = ' ',
+        folder_open = ' ',
+        folder_empty = ' ',
+        default = ' ',
+      },
+    },
     filesystem = {
       filtered_items = {
         hide_dotfiles = false,
@@ -21,6 +28,8 @@ return {
       window = {
         mappings = {
           ['\\'] = 'close_window',
+          ['<right>'] = 'open',
+          ['<left>'] = 'close_node',
         },
       },
     },
